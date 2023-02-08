@@ -1,9 +1,9 @@
 {
+  "help": "https://github.com/CarsonSlovoka/unique/blob/8fdd83b1a8d6e21560ef5eb1d1e8f0fa3aec5c7a/README.md?plain=1#L21-L29",
   "wkDir": "./testDir",
   "suffixes": [
     ".png",
     ".jpg"
   ],
-  "suffixesExample": ["*"],
   "condition": "len"
 }
