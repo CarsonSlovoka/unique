@@ -1,15 +1,21 @@
 # Unique
 
-移除重複的檔案
+移除重複的檔案，以檔案md5為主，若有重複就只留下一個。
 
-以檔案md5為主，若有重複就只留下一個。
-
-其中保留的那一個可以依照
+其中保留的那一個可以依照以下其中一個來指定
 
 - cTime: 保留建立日期最早的檔案
 - len: 保留檔案路徑最短者
 
-## [設定檔](v1/.unique.json)
+## Install
+
+```yaml
+git clone https://github.com/CarsonSlovoka/unique.git
+cd unique
+go install -ldflags "-s -w" unique/unique # go.mod用unique命名，後面的unique為package main所在的路徑，又因go install預設用package main所在的文件夾命名，所以要改成unique
+```
+
+## [設定檔](unique/.unique.json)
 
 ```json5
 {
