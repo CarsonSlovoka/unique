@@ -1,3 +1,27 @@
+<p align="center">
+  <a href="asset/img/site/favicon.svg">
+    <img alt="replace" src="asset/img/site/favicon.svg" width="128"/>
+  </a><br>
+  <a href="http://golang.org">
+      <img src="https://img.shields.io/badge/Made%20with-Go-1f425f.svg" alt="Made with Go">
+  </a>
+
+  <a href="https://pkg.go.dev/github.com/CarsonSlovoka/unique">
+      <img src="https://pkg.go.dev/badge/CarsonSlovoka/unique/unique.svg" alt="">
+  </a>
+
+  <!-- filename=src%2Fgo.mod" -->
+  <img src="https://img.shields.io/github/go-mod/go-version/CarsonSlovoka/unique?filename=go.mod" alt="go.mod">
+
+  <a href="https://GitHub.com/CarsonSlovoka/unique/releases/">
+      <img src="https://img.shields.io/github/release/CarsonSlovoka/unique" alt="Latest release">
+  </a>
+  <a href="https://github.com/CarsonSlovoka/unique/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/CarsonSlovoka/unique.svg" alt="License">
+  </a>
+</p>
+
+
 # Unique
 
 移除重複的檔案，以檔案md5為主，若有重複就只留下一個。
@@ -7,12 +31,13 @@
 - cTime: 保留建立日期最早的檔案
 - len: 保留檔案路徑最短者
 
-## Install
+## Install&Usage
 
 ```yaml
 git clone https://github.com/CarsonSlovoka/unique.git
 cd unique
 go install -ldflags "-s -w" github.com/CarsonSlovoka/unique/unique # 前面的unique為go.mod所用的名稱，後面的unique為package main所在的路徑，又因go install預設用package main所在的文件夾命名，所以要改成unique
+unique.exe -config="example-unique.json"
 ```
 
 ## [設定檔](unique/.unique.json)

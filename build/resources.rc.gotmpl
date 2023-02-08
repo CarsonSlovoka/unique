@@ -1,0 +1,22 @@
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION    {{replaceAll (makeValidVersion .Version) "." ","}}
+    PRODUCTVERSION {{replaceAll (makeValidVersion .Version) "." ","}}
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "040904b0"
+        {
+            VALUE "CompanyName",        "\0"
+            VALUE "FileDescription",    "{{.Desc}}\0"
+            VALUE "FileVersion",        "{{.Version}}\0"
+            VALUE "LegalCopyright",     "{{.Copyright}}\0"
+            VALUE "OriginalFilename",   "{{.ExeName}}.exe\0"
+            VALUE "ProductName",        "{{.ProductName}}\0"
+            VALUE "ProductVersion",     "{{.Version}}\0"
+        }
+    }
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation", 0x0409, 1200
+    }
+}
