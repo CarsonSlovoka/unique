@@ -1,4 +1,4 @@
-module unique
+module github.com/CarsonSlovoka/unique
 
 go 1.19
 
