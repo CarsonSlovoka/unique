@@ -1,11 +1,9 @@
 {
   "wkDir": "./testDir",
-  "wkDirExample": "C:\\...\\images",
   "suffixes": [
     ".png",
     ".jpg"
   ],
   "suffixesExample": ["*"],
-  "condition": "cTime",
-  "conditionExample": "cTime, len"
+  "condition": "len"
 }
