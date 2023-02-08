@@ -31,7 +31,7 @@
 - cTime: 保留建立日期最早的檔案
 - len: 保留檔案路徑最短者
 
-## Install&Usage
+## Install & Usage
 
 ```yaml
 git clone https://github.com/CarsonSlovoka/unique.git
@@ -39,6 +39,10 @@ cd unique
 go install -ldflags "-s -w" github.com/CarsonSlovoka/unique/unique # 前面的unique為go.mod所用的名稱，後面的unique為package main所在的路徑，又因go install預設用package main所在的文件夾命名，所以要改成unique
 unique.exe -config="example-unique.json"
 ```
+
+## [Download zip]
+
+可以至[releases](https://github.com/CarsonSlovoka/unique/releases)的頁面找尋喜歡的版本下載該zip檔案即可(目前僅提供windows)
 
 ## [設定檔](unique/.unique.json)
 
