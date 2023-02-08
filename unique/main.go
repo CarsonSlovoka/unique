@@ -19,6 +19,10 @@ type File struct {
 	Info os.FileInfo
 }
 
+func (f *File) String() string {
+	return f.Path
+}
+
 type Config struct {
 	WkDir     string `json:"wkDir"`
 	Suffixes  []string
@@ -89,6 +93,7 @@ func main() {
 		return
 	}
 
+	log.Println("👷 開始移除作業")
 	user32dll := w32.NewUser32DLL(w32.PNMessageBox)
 	response, _ := user32dll.MessageBox(0, "是否要移除所有重複檔案", "確認", w32.MB_YESNO)
 	if response == w32.IDYES {
@@ -115,9 +120,15 @@ func removeByCondition(files map[Hash][]File, condition *string) {
 		}
 	}
 
-	var err error
-	for _, curFiles := range files {
+	var (
+		err      error
+		countOK  int
+		countErr int
+	)
+
+	for hash, curFiles := range files {
 		var keep *File
+		log.Printf("hash: %s\n", hash)
 		for i, curF := range curFiles {
 			if keep == nil {
 				// keep = &curF // 錯誤curF會異動，這樣keep也會跟著跑
@@ -128,15 +139,23 @@ func removeByCondition(files map[Hash][]File, condition *string) {
 			var removePath string
 			if isNeedUpdateKeep(&curF, keep) {
 				removePath = keep.Path
-				keep = &curF
+				keep = &curFiles[i]
 			} else {
 				removePath = curF.Path
 			}
 			if err = os.Remove(removePath); err != nil {
-				log.Println(err)
+				log.Println("[移除失敗]", err)
+				countErr++
 				continue
 			}
 			log.Printf("成功移除:%q\n", removePath)
+			countOK++
+		}
+
+		if keep != nil {
+			log.Printf("保留檔案:%q\n", keep)
 		}
 	}
+	log.Printf("✅ 移除成功總計:%d\n", countOK)
+	log.Printf("❌ 移除失敗總計:%d\n", countErr)
 }
