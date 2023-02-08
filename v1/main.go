@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
+	"flag"
 	"github.com/CarsonSlovoka/go-pkg/v2/w32"
 	"io/fs"
 	"log"
@@ -25,7 +26,10 @@ type Config struct {
 }
 
 func main() {
-	configPath := ".unique.json"
+	var configPath string
+	flag.StringVar(&configPath, "config", ".unique.json", "請輸入設定檔的路徑")
+	flag.Parse()
+
 	if _, err := os.Stat(configPath); err != nil {
 		log.Fatal(err)
 	}
